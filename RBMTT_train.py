@@ -50,7 +50,7 @@ if __name__ == '__main__':
             meas_pre = RB.data_pre(meas)
             r = (meas - true)[2:, :]  # 真实残差
             src = (meas - meas_pre)[2:, :]  # 前两个时刻直接输出，去掉
-            tgt = r[:-1, :]  # decoder输入，去掉结束符， 这里存疑
+            tgt = r[:-1, :]  # decoder输入，去掉结束符
             out = r[1:, :]  # 网络输出，去掉开始符
             r_estimate = model(src, tgt)  # estimate:
             loss = RB.loss_fn(r_estimate, out)
